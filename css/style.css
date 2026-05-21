@@ -1,0 +1,177 @@
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #f7f6f2;
+  --text:    #1a1a18;
+  --muted:   #888880;
+  --accent:  #1a1a18;
+  --border:  #d8d7d0;
+  --max-w:   680px;
+  --font:    "IM Fell English", Georgia, serif;
+  --mono:    "Courier New", monospace;
+}
+
+html { font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+a:hover { opacity: 0.6; }
+
+/* ── Layout ── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── Nav ── */
+nav {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.nav-left { display: flex; gap: 1.5rem; }
+
+.nav-site-name {
+  font-style: italic;
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 1.5rem; }
+.nav-links a { text-decoration: none; font-size: 0.9rem; color: var(--muted); }
+.nav-links a:hover { color: var(--text); opacity: 1; }
+
+#lang-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+#lang-toggle:hover { color: var(--text); }
+
+/* ── Main ── */
+main { flex: 1; padding: 3rem 0; }
+
+/* ── Sections ── */
+section + section { margin-top: 3rem; }
+
+h1 { font-size: 1.1rem; font-weight: normal; font-style: italic; margin-bottom: 1.5rem; }
+h2 { font-size: 0.85rem; font-weight: normal; color: var(--muted); text-transform: uppercase;
+     letter-spacing: 0.08em; margin-bottom: 1rem; }
+
+p { margin-bottom: 1rem; font-size: 0.95rem; }
+
+/* ── Featured projects (landing) ── */
+.featured-list { list-style: none; }
+.featured-list li {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+.featured-list li:last-child { border-bottom: 1px solid var(--border); }
+
+.featured-list a { text-decoration: none; display: block; }
+.featured-list a:hover { opacity: 0.6; }
+
+.featured-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.25rem;
+  font-family: var(--mono);
+}
+
+.featured-title { font-size: 1rem; margin-bottom: 0.3rem; }
+.featured-blurb { font-size: 0.85rem; color: var(--muted); }
+
+/* ── Archives table ── */
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.archive-table thead th {
+  text-align: left;
+  font-weight: normal;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.archive-table tbody tr {
+  border-bottom: 1px solid var(--border);
+}
+
+.archive-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+
+.archive-table td {
+  padding: 0.75rem 0;
+  vertical-align: top;
+}
+
+.archive-table td:not(:last-child) { padding-right: 1.5rem; }
+.archive-table .col-year { color: var(--muted); font-family: var(--mono); font-size: 0.8rem; white-space: nowrap; }
+.archive-table .col-type { color: var(--muted); }
+.archive-table a { text-decoration: none; }
+.archive-table a:hover { text-decoration: underline; }
+
+/* ── About / CV ── */
+.cv-section { margin-bottom: 2rem; }
+.cv-entry { display: flex; gap: 1.5rem; padding: 0.5rem 0; border-top: 1px solid var(--border); font-size: 0.88rem; }
+.cv-year { color: var(--muted); font-family: var(--mono); font-size: 0.8rem; white-space: nowrap; min-width: 4rem; }
+
+.contact-line { font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+/* ── Individual project page ── */
+.project-header { margin-bottom: 2rem; }
+.project-meta { font-size: 0.8rem; color: var(--muted); font-family: var(--mono); margin-bottom: 0.5rem; }
+.project-title { font-size: 1.3rem; font-style: italic; margin-bottom: 1rem; }
+.project-body { font-size: 0.92rem; }
+.project-body p + p { margin-top: 0.75rem; }
+
+.project-images { margin-top: 2rem; }
+.project-images img {
+  width: 100%;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.img-caption { font-size: 0.75rem; color: var(--muted); margin-bottom: 1.5rem; font-family: var(--mono); }
+
+/* ── Footer ── */
+footer {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .archive-table .col-school,
+  .archive-table .col-type { display: none; }
+  .cv-entry { flex-direction: column; gap: 0.2rem; }
+}
