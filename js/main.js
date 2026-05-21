@@ -1,12 +1,22 @@
-/* oslal — v0.2  →  js/main.js */
+/* oslal — v0.3  →  js/main.js */
 
 /* Grid config — keep in sync with .page-grid in css/style.css */
 const GRID = { cols: 10, rows: 6, gutter: 10, margin: 25 };
 
-/* ---------- Translations (titles are the same in both languages) ---------- */
+/* ---------- Translations ---------- */
 const translations = {
-  fr: { nav_archives: 'Archives', nav_info: 'Informations' },
-  en: { nav_archives: 'Archives', nav_info: 'Informations' }
+  fr: {
+    nav_archives: 'Archives',
+    nav_info: 'Informations',
+    col_project: 'Projet',
+    info_soon: 'Informations à venir.'
+  },
+  en: {
+    nav_archives: 'Archives',
+    nav_info: 'Informations',
+    col_project: 'Project',
+    info_soon: 'Informations coming soon.'
+  }
 };
 
 /* ---------- Persistent state (carries across pages) ---------- */
@@ -89,6 +99,7 @@ function applyLang() {
 function toggleLang() {
   store.setLang(store.lang() === 'fr' ? 'en' : 'fr');
   applyLang();
+  renderProjects();   // re-render rows in the new language
 }
 
 /* ---------- Navigation: active circle + click-on-current toggles guides ---------- */
@@ -104,6 +115,48 @@ function initNav() {
   if (langBtn) langBtn.addEventListener('click', toggleLang);
 }
 
+/* ---------- Archives: render the list from js/projects.js ---------- */
+function renderProjects() {
+  const list = document.getElementById('project-list');
+  if (!list || typeof PROJECTS === 'undefined') return;
+
+  const lang = store.lang();
+  const pick = (v) =>
+    (v && typeof v === 'object') ? (v[lang] ?? v.fr ?? v.en ?? '') : (v ?? '');
+
+  list.innerHTML = '';
+  PROJECTS.forEach(p => {
+    const row = document.createElement('div');
+    row.className = 'project-row';
+
+    const name = document.createElement('div');
+    name.className = 'p-name';
+    if (p.page) {
+      const a = document.createElement('a');
+      a.href = `archives/${p.slug}/`;
+      a.textContent = pick(p.name);
+      name.appendChild(a);
+    } else {
+      name.textContent = pick(p.name);
+    }
+
+    const type = document.createElement('div');
+    type.className = 'p-type';
+    type.textContent = pick(p.type);
+
+    const inst = document.createElement('div');
+    inst.className = 'p-inst';
+    inst.textContent = pick(p.institution);
+
+    const date = document.createElement('div');
+    date.className = 'p-date';
+    date.textContent = p.year ?? '';
+
+    row.append(name, type, inst, date);
+    list.appendChild(row);
+  });
+}
+
 /* ---------- Random welcome model (landing only) ---------- */
 function initModel() {
   const mv = document.getElementById('model');
@@ -116,8 +169,9 @@ function initModel() {
 window.addEventListener('DOMContentLoaded', () => {
   applyLang();
   initNav();
-  applyGuides();   // off by default; only on if you toggled it previously
+  applyGuides();   // off by default
   drawGrid();
+  renderProjects();
   initModel();
 });
 window.addEventListener('resize', drawGrid);
