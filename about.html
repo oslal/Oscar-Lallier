@@ -1,42 +1,23 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>À propos — oslal</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informations — Oscar Lallier</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="informations">
+  <canvas id="grid-canvas"></canvas>
 
-  <nav>
-    <div class="container">
-      <div class="nav-left">
-        <a class="nav-site-name" href="/">oslal</a>
-        <div class="nav-links">
-          <a href="/archives.html" data-i18n="nav_archives">Archives</a>
-          <a href="/about.html"    data-i18n="nav_about">À propos</a>
-        </div>
-      </div>
-      <button id="lang-toggle">EN</button>
-    </div>
-  </nav>
+  <div class="page-grid">
+    <a class="nav-item nav-name"     data-nav="index"        href="index.html">Oscar Lallier</a>
+    <a class="nav-item nav-archives" data-nav="archives"     href="archives.html"     data-i18n="nav_archives">Archives</a>
+    <a class="nav-item nav-info"     data-nav="informations" href="informations.html" data-i18n="nav_info">Informations</a>
+    <button class="nav-item nav-lang" id="lang-toggle" type="button">En</button>
 
-  <main>
-    <div class="container">
+    <!-- CV + contact will go here (v0.2) -->
+  </div>
 
-      <h1 data-i18n="about_title">À propos</h1>
-
-      <!-- Bio -->
-      <section>
-        <p data-i18n="about_bio">Votre texte biographique ici.</p>
-      </section>
-
-      <!-- CV -->
-      <section class="cv-section">
-        <h2 data-i18n="about_cv_title">Parcours</h2>
-
-        <!-- Education -->
-        <div class="cv-entry">
-          <span class="cv-year">2022–
+  <script src="js/main.js"></script>
+</body>
+</html>
