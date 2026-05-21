@@ -1,4 +1,4 @@
-/* oslal — v0.3  →  css/style.css */
+/* oslal — v0.4  →  css/style.css */
 
 @font-face {
   font-family: 'PP Neue Montreal';
@@ -15,8 +15,8 @@
   /* Grid — keep in sync with GRID in js/main.js */
   --gutter: 10px;
   --margin: 25px;
-  /* Column titles — 18px (swap to 24px for larger) */
-  --head-size: 18px;
+  /* Column titles / headings — ~1.5x the 14px body text */
+  --head-size: 24px;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,7 +37,6 @@ body {
 body[data-page="index"] { overflow: hidden; }
 
 /* ---------- Welcome model: full-screen canvas so zoom isn't clipped ---------- */
-/* Opens framed at ~6x4 via camera-orbit radius (150%) in index.html.            */
 #model {
   position: fixed;
   inset: 0;
@@ -93,29 +92,29 @@ body[data-page="index"] { overflow: hidden; }
   vertical-align: 0.02em;
 }
 
-/* ---------- Archives: column headers (row 2) ---------- */
+/* ---------- Archives: column headers (row 2, ~1.5x body) ---------- */
 .col-head {
   grid-row: 2;
   align-self: start;
   font-size: var(--head-size);
 }
-.head-project     { grid-column: 1 / span 6; }
-.head-type        { grid-column: 7; }
-.head-institution { grid-column: 8 / span 2; }
+.head-project     { grid-column: 1 / span 5; }
+.head-type        { grid-column: 6; }
+.head-institution { grid-column: 7 / span 2; }
 .head-date        { grid-column: 10; justify-self: end; }
 
 /* ---------- Archives: project list (rows 3–5) ---------- */
 .project-list {
   grid-column: 1 / span 10;
   grid-row: 3 / span 3;
-  overflow-y: auto;            /* scrolls if the list grows long */
+  overflow-y: auto;
 }
 .project-row {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: var(--gutter);
 }
-.project-row > * { min-width: 0; }   /* let long text wrap cleanly */
+.project-row > * { min-width: 0; }
 .p-name { grid-column: 1 / span 6; }
 .p-type { grid-column: 7; }
 .p-inst { grid-column: 8 / span 2; }
@@ -125,17 +124,24 @@ body[data-page="index"] { overflow: hidden; }
 
 /* ---------- Informations: temporary placeholder ---------- */
 .info-soon {
-  grid-column: 7 / span 4;     /* cols 7–10 */
+  grid-column: 6 / span 5;     /* cols 6–10 */
   grid-row: 3;
   align-self: start;
   font-size: var(--head-size);
 }
 
+/* ---------- Project page (archives/<slug>/) ---------- */
+.project-title  { grid-column: 1 / span 6; grid-row: 2; align-self: start; font-size: var(--head-size); font-weight: 400; }
+.project-meta   { grid-column: 1 / span 6; grid-row: 3; align-self: start; }
+.project-body   { grid-column: 1 / span 6; grid-row: 4 / span 2; align-self: start; }
+.project-images { grid-column: 7 / span 4; grid-row: 2 / span 4; align-self: start; overflow-y: auto; }
+.project-images img { width: 100%; display: block; margin-bottom: var(--gutter); }
+
 /* ---------- Footer ---------- */
 .footer {
   grid-column: 1;
   grid-row: 6;
-  align-self: end;             /* bottom-left */
+  align-self: end;
 }
 
 /* ---------- Grid overlay ---------- */
