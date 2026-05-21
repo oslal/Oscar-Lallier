@@ -11,13 +11,14 @@
    Order in the array = order shown on the page.
 */
 
+//001
 const PROJECTS = [
-  // {
-  //   slug: 'prototyping-forest-resilience',
-  //   name: 'Prototyping Forest Resilience',
-  //   type: { fr: 'Projet de maîtrise', en: 'Masters Project' },
-  //   institution: 'McGill University',
-  //   year: '2025 / 2026',
-  //   page: true
+  {
+  slug: 'prototyping-forest-resilience',
+  name: 'Prototyping Forest Resilience',
+  type: { fr: 'Projet de maîtrise', en: 'Masters Project' },
+  institution: { fr: 'Université McGill', en: 'McGill University' },
+  year: '2025 / 2026',
+  page: true
   // },
 ];
