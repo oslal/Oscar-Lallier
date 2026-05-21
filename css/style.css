@@ -1,4 +1,4 @@
-/* oslal — v0.1 */
+/* oslal — v0.2  →  css/style.css */
 
 @font-face {
   font-family: 'PP Neue Montreal';
@@ -12,7 +12,7 @@
   --guide: #00ff00;
   --fg: #000000;
   --bg: #ffffff;
-  /* Grid — keep these in sync with GRID in js/main.js */
+  /* Grid — keep in sync with GRID in js/main.js */
   --gutter: 10px;
   --margin: 25px;
 }
@@ -25,14 +25,27 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: 'PP Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 12px;          /* 12 pt @ 72 dpi */
-  letter-spacing: -0.01em;  /* -10 per-mille tracking */
-  line-height: 1.2;         /* 14.4 pt / 12 pt */
+  font-size: 14px;
+  letter-spacing: -0.01em;   /* -10 per-mille tracking */
+  line-height: 1.2;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Landing is a single viewport (no scroll) */
 body[data-page="index"] { overflow: hidden; }
+
+/* ---------- Welcome model: full-screen canvas so zoom isn't clipped ---------- */
+/* Opens framed at ~6x4 via camera-orbit radius (150%) in index.html.            */
+/* Lower the % to start bigger, raise it to start smaller.                       */
+#model {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-color: transparent;
+  --progress-bar-color: transparent;
+}
 
 /* ---------- Page grid: 10 cols x 6 rows, 25px margin, 10px gutter ---------- */
 .page-grid {
@@ -44,11 +57,13 @@ body[data-page="index"] { overflow: hidden; }
   grid-template-rows: repeat(6, 1fr);
   gap: var(--gutter);
   padding: var(--margin);
+  pointer-events: none;        /* clicks/drag pass through to the model behind */
 }
 
 /* ---------- Navigation ---------- */
 .nav-item {
-  align-self: start;             /* top-aligned in its row */
+  align-self: start;           /* top-aligned in its row */
+  pointer-events: auto;        /* but the nav itself stays interactive */
   color: var(--fg);
   text-decoration: none;
   font: inherit;
@@ -63,7 +78,7 @@ body[data-page="index"] { overflow: hidden; }
 .nav-name     { grid-column: 1;  grid-row: 1; }
 .nav-archives { grid-column: 6;  grid-row: 1; }
 .nav-info     { grid-column: 7;  grid-row: 1; }
-.nav-lang     { grid-column: 10; grid-row: 1; justify-self: end; }  /* top-right */
+.nav-lang     { grid-column: 10; grid-row: 1; justify-self: end; }   /* top-right */
 
 /* Active-page indicator — filled circle */
 .nav-item.active::after {
@@ -77,14 +92,11 @@ body[data-page="index"] { overflow: hidden; }
   vertical-align: 0.02em;
 }
 
-/* ---------- Welcome model: 6 x 4 cells, centred (cols 3-8, rows 2-5) ---------- */
-#model {
-  grid-column: 3 / span 6;
-  grid-row: 2 / span 4;
-  width: 100%;
-  height: 100%;
-  background-color: transparent;
-  --progress-bar-color: transparent;
+/* ---------- Footer ---------- */
+.footer {
+  grid-column: 1;
+  grid-row: 6;
+  align-self: end;             /* bottom-left */
 }
 
 /* ---------- Grid overlay ---------- */
