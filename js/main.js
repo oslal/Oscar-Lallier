@@ -1,12 +1,12 @@
-/* oslal — v0.1 */
+/* oslal — v0.2  →  js/main.js */
 
 /* Grid config — keep in sync with .page-grid in css/style.css */
 const GRID = { cols: 10, rows: 6, gutter: 10, margin: 25 };
 
-/* ---------- Translations ---------- */
+/* ---------- Translations (titles are the same in both languages) ---------- */
 const translations = {
   fr: { nav_archives: 'Archives', nav_info: 'Informations' },
-  en: { nav_archives: 'Archives', nav_info: 'Information' }
+  en: { nav_archives: 'Archives', nav_info: 'Informations' }
 };
 
 /* ---------- Persistent state (carries across pages) ---------- */
@@ -116,7 +116,7 @@ function initModel() {
 window.addEventListener('DOMContentLoaded', () => {
   applyLang();
   initNav();
-  applyGuides();
+  applyGuides();   // off by default; only on if you toggled it previously
   drawGrid();
   initModel();
 });
