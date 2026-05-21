@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>oslal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="nav-left">
+        <a class="nav-site-name" href="/">oslal</a>
+        <div class="nav-links">
+          <a href="/archives.html" data-i18n="nav_archives">Archives</a>
+          <a href="/about.html"    data-i18n="nav_about">À propos</a>
+        </div>
+      </div>
+      <button id="lang-toggle">EN</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+
+      <!-- Intro -->
+      <section>
+        <p data-i18n="landing_intro">Architecte en formation, basé·e à Montréal.</p>
+      </section>
+
+      <!-- Featured projects -->
+      <section>
+        <h2 data-i18n="landing_featured_title">Projets sélectionnés</h2>
+        <ul class="featured-list">
+
+          <li>
+            <a href="/archives/project-one.html">
+              <div class="featured-meta">2024 — École / Type de projet</div>
+              <div class="featured-title">Nom du projet un</div>
+              <div class="featured-blurb" data-i18n="feat1_blurb">
+                Une courte description du projet, de son contexte et de ses intentions.
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="/archives/project-two.html">
+              <div class="featured-meta">2023 — École / Type de projet</div>
+              <div class="featured-title">Nom du projet deux</div>
+              <div class="featured-blurb" data-i18n="feat2_blurb">
+                Une courte description du projet, de son contexte et de ses intentions.
+              </div>
+            </a>
+          </li>
+
+          <li>
+            <a href="/archives/project-three.html">
+              <div class="featured-meta">2023 — École / Type de projet</div>
+              <div class="featured-title">Nom du projet trois</div>
+              <div class="featured-blurb" data-i18n="feat3_blurb">
+                Une courte description du projet, de son contexte et de ses intentions.
+              </div>
+            </a>
+          </li>
+
+        </ul>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span data-i18n="footer">© 2025 oslal</span>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>

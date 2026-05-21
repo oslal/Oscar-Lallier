@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archives — oslal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <div class="nav-left">
+        <a class="nav-site-name" href="/">oslal</a>
+        <div class="nav-links">
+          <a href="/archives.html" data-i18n="nav_archives">Archives</a>
+          <a href="/about.html"    data-i18n="nav_about">À propos</a>
+        </div>
+      </div>
+      <button id="lang-toggle">EN</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <h1 data-i18n="archives_title">Archives</h1>
+
+      <table class="archive-table">
+        <thead>
+          <tr>
+            <th data-i18n="archives_col_project">Projet</th>
+            <th class="col-year" data-i18n="archives_col_year">Année</th>
+            <th class="col-school" data-i18n="archives_col_school">École</th>
+            <th class="col-type" data-i18n="archives_col_type">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Add your projects here. Repeat the <tr> block for each. -->
+          <tr>
+            <td><a href="/archives/project-one.html">Nom du projet un</a></td>
+            <td class="col-year">2024</td>
+            <td class="col-school">UdeM</td>
+            <td class="col-type">Logement</td>
+          </tr>
+          <tr>
+            <td><a href="/archives/project-two.html">Nom du projet deux</a></td>
+            <td class="col-year">2023</td>
+            <td class="col-school">UdeM</td>
+            <td class="col-type">Urbain</td>
+          </tr>
+          <tr>
+            <td><a href="/archives/project-three.html">Nom du projet trois</a></td>
+            <td class="col-year">2023</td>
+            <td class="col-school">UdeM</td>
+            <td class="col-type">Culturel</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <span data-i18n="footer">© 2025 oslal</span>
+    </div>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>
