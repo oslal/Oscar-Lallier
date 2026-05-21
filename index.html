@@ -11,26 +11,28 @@
 <body data-page="index">
   <canvas id="grid-canvas"></canvas>
 
+  <model-viewer
+    id="model"
+    alt="Welcome model"
+    camera-controls
+    auto-rotate
+    auto-rotate-delay="0"
+    rotation-per-second="12deg"
+    shadow-intensity="0.6"
+    shadow-softness="1"
+    environment-image="neutral"
+    exposure="1.1"
+    camera-orbit="45deg 70deg 150%"
+    tone-mapping="neutral">
+  </model-viewer>
+
   <div class="page-grid">
     <a class="nav-item nav-name"     data-nav="index"        href="index.html">Oscar Lallier</a>
     <a class="nav-item nav-archives" data-nav="archives"     href="archives.html"     data-i18n="nav_archives">Archives</a>
     <a class="nav-item nav-info"     data-nav="informations" href="informations.html" data-i18n="nav_info">Informations</a>
     <button class="nav-item nav-lang" id="lang-toggle" type="button">En</button>
 
-    <model-viewer
-      id="model"
-      alt="Welcome model"
-      camera-controls
-      auto-rotate
-      auto-rotate-delay="0"
-      rotation-per-second="12deg"
-      shadow-intensity="0.6"
-      shadow-softness="1"
-      environment-image="neutral"
-      exposure="1.1"
-      camera-orbit="45deg 70deg 2.5m"
-      tone-mapping="neutral">
-    </model-viewer>
+    <span class="footer">©</span>
   </div>
 
   <script src="js/main.js"></script>
