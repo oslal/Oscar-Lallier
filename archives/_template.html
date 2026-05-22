@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Standard project page template.
+     Keep a copy at  archives/_template.html
+     To make a new project: copy this into  archives/<slug>/index.html ,
+     then fill in the title/meta/text and drop images in  archives/<slug>/img/ .
+     Paths are root-relative ("/..."), so this works at any folder depth — no edits needed. -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — Oscar Lallier</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="project">
+  <canvas id="grid-canvas"></canvas>
+
+  <div class="page-grid">
+    <a class="nav-item nav-name"     data-nav="index"        href="/">Oscar Lallier</a>
+    <a class="nav-item nav-archives" data-nav="archives"     href="/archives/"         data-i18n="nav_archives">Archives</a>
+    <a class="nav-item nav-info"     data-nav="informations" href="/informations.html" data-i18n="nav_info">Informations</a>
+    <button class="nav-item nav-lang" id="lang-toggle" type="button">En</button>
+
+    <!-- ↓ Replace with the project's content ↓ -->
+    <h1 class="project-title">Project name</h1>
+    <div class="project-meta">Type · Institution · Year</div>
+    <div class="project-body">
+      <p>Project description goes here.</p>
+    </div>
+    <div class="project-images">
+      <img src="img/01.jpg" alt="">
+      <img src="img/02.jpg" alt="">
+    </div>
+    <!-- ↑ Replace with the project's content ↑ -->
+
+    <span class="footer">©</span>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
