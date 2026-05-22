@@ -1,4 +1,4 @@
-/* oslal — v0.3  →  js/main.js */
+/* oslal — v0.4.3  →  js/main.js */
 
 /* Grid config — keep in sync with .page-grid in css/style.css */
 const GRID = { cols: 10, rows: 6, gutter: 10, margin: 25 };
@@ -59,14 +59,12 @@ function drawGrid() {
     ctx.stroke();
   };
 
-  // vertical: left + right edge of each column
   for (let i = 0; i < GRID.cols; i++) {
     const x1 = m + i * (colW + g);
     const x2 = x1 + colW;
     seg(x1, m, x1, H - m);
     seg(x2, m, x2, H - m);
   }
-  // horizontal: top + bottom edge of each row
   for (let r = 0; r < GRID.rows; r++) {
     const y1 = m + r * (rowH + g);
     const y2 = y1 + rowH;
@@ -99,7 +97,7 @@ function applyLang() {
 function toggleLang() {
   store.setLang(store.lang() === 'fr' ? 'en' : 'fr');
   applyLang();
-  renderProjects();   // re-render rows in the new language
+  renderProjects();
 }
 
 /* ---------- Navigation: active circle + click-on-current toggles guides ---------- */
@@ -133,7 +131,7 @@ function renderProjects() {
     name.className = 'p-name';
     if (p.page) {
       const a = document.createElement('a');
-      a.href = `archives/${p.slug}/`;
+      a.href = `/archives/${p.slug}/`;   // root-relative clean URL
       a.textContent = pick(p.name);
       name.appendChild(a);
     } else {
@@ -161,15 +159,15 @@ function renderProjects() {
 function initModel() {
   const mv = document.getElementById('model');
   if (!mv) return;
-  const n = Math.floor(Math.random() * 7) + 1;   // 1..7
-  mv.setAttribute('src', `assets/glb/${n}.glb`);
+  const n = Math.floor(Math.random() * 7) + 1;       // 1..7
+  mv.setAttribute('src', `/assets/glb/${n}.glb`);    // root-relative
 }
 
 /* ---------- Init ---------- */
 window.addEventListener('DOMContentLoaded', () => {
   applyLang();
   initNav();
-  applyGuides();   // off by default
+  applyGuides();
   drawGrid();
   renderProjects();
   initModel();
