@@ -1,4 +1,4 @@
-/* oslal — v0.4  →  css/style.css */
+/* oslal — v0.4.3  →  css/style.css */
 
 @font-face {
   font-family: 'PP Neue Montreal';
@@ -15,7 +15,7 @@
   /* Grid — keep in sync with GRID in js/main.js */
   --gutter: 10px;
   --margin: 25px;
-  /* Column titles / headings — ~1.5x the 14px body text */
+  /* Column titles / headings */
   --head-size: 24px;
 }
 
@@ -92,7 +92,7 @@ body[data-page="index"] { overflow: hidden; }
   vertical-align: 0.02em;
 }
 
-/* ---------- Archives: column headers (row 2, ~1.5x body) ---------- */
+/* ---------- Archives: column headers (row 2) ---------- */
 .col-head {
   grid-row: 2;
   align-self: start;
@@ -104,6 +104,7 @@ body[data-page="index"] { overflow: hidden; }
 .head-date        { grid-column: 10; justify-self: end; }
 
 /* ---------- Archives: project list (rows 3–5) ---------- */
+/* Data cells aligned to the header columns above. */
 .project-list {
   grid-column: 1 / span 10;
   grid-row: 3 / span 3;
@@ -115,12 +116,12 @@ body[data-page="index"] { overflow: hidden; }
   gap: var(--gutter);
 }
 .project-row > * { min-width: 0; }
-.p-name { grid-column: 1 / span 6; }
-.p-type { grid-column: 7; }
-.p-inst { grid-column: 8 / span 2; }
+.p-name { grid-column: 1 / span 5; }
+.p-type { grid-column: 6; }
+.p-inst { grid-column: 7 / span 2; }
 .p-date { grid-column: 10; text-align: right; }
 .p-name a { color: inherit; text-decoration: none; }
-.p-name a:hover { opacity: 0.5; }
+.p-name a:hover { text-decoration: underline; }
 
 /* ---------- Informations: temporary placeholder ---------- */
 .info-soon {
