@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- Save as informations/index.html. Replaces the old root-level informations.html.
+     Content is bilingual via data-fr / data-en on each text element.
+     ⚠ FLAGGED for your review (from planning notes):
+       • "Collège de Montréal" vs "Collège de Maisonneuve" — verify which you attended.
+       • CB Architectes / Kuník de Morsier listed as two firms under one title — confirm.
+       • Awards list is a rough draft — refine names/years as needed. -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informations — Oscar Lallier</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="informations">
+  <canvas id="grid-canvas"></canvas>
+
+  <div class="page-grid">
+    <a class="nav-item nav-name"     data-nav="index"        href="/">Oscar Lallier</a>
+    <a class="nav-item nav-archives" data-nav="archives"     href="/archives/"        data-i18n="nav_archives">Archives</a>
+    <a class="nav-item nav-info"     data-nav="informations" href="/informations/"    data-i18n="nav_info">Informations</a>
+    <button class="nav-item nav-lang" id="lang-toggle" type="button">En</button>
+
+    <!-- Contact -->
+    <section class="info-section info-contact reveal" style="--i:0">
+      <div class="label" data-fr="Contact" data-en="Contact">Contact</div>
+      <ul>
+        <li><a class="ext-link" href="mailto:oscar.lallier@mail.mcgill.ca">oscar.lallier@mail.mcgill.ca</a></li>
+        <li><a class="ext-link" href="https://www.linkedin.com/in/oscar-lallier/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section class="info-section info-experience reveal" style="--i:1">
+      <div class="label" data-fr="Expérience" data-en="Experience">Expérience</div>
+      <ul>
+        <li>
+          <span data-fr="Candidat à la profession d’architecte"
+                data-en="Architect in training">Candidat à la profession d’architecte</span><br>
+          <a class="ext-link" href="https://cb-architectes.ch/" target="_blank" rel="noopener">CB Architectes</a>,
+          <a class="ext-link" href="https://kunikdemorsier.com/" target="_blank" rel="noopener">Kuník de Morsier</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Education -->
+    <section class="info-section info-education reveal" style="--i:2">
+      <div class="label" data-fr="Formation" data-en="Education">Formation</div>
+      <ul>
+        <li>
+          <span data-fr="M. Arch." data-en="M.Arch.">M. Arch.</span>
+          — <a class="ext-link" href="https://www.mcgill.ca/architecture/" target="_blank" rel="noopener"><span data-fr="Université McGill" data-en="McGill University">Université McGill</span></a>
+          <span class="sub">2024 — </span>
+        </li>
+        <li>
+          <span data-fr="Échange académique" data-en="Academic exchange">Échange académique</span>
+          — <a class="ext-link" href="https://www.epfl.ch/schools/enac/" target="_blank" rel="noopener">EPFL</a>
+        </li>
+        <li>
+          <span data-fr="B. Sc. en architecture" data-en="B.Sc. in Architecture">B. Sc. en architecture</span>
+          — <a class="ext-link" href="https://www.umontreal.ca/" target="_blank" rel="noopener"><span data-fr="Université de Montréal" data-en="University of Montreal">Université de Montréal</span></a>
+          <span class="sub">2021 — 2024</span>
+        </li>
+        <li>
+          <!-- ⚠ verify name: you wrote "Collège de Montréal", URL points to Maisonneuve -->
+          <span data-fr="DEC, Sciences de la nature" data-en="DEC, Natural Sciences">DEC, Sciences de la nature</span>
+          — <a class="ext-link" href="https://www.cmaisonneuve.qc.ca/" target="_blank" rel="noopener">Collège de Maisonneuve</a>
+          <span class="sub">2019 — 2021</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Awards -->
+    <section class="info-section info-awards reveal" style="--i:3">
+      <div class="label" data-fr="Distinctions" data-en="Awards">Distinctions</div>
+      <ul>
+        <li>
+          <span data-fr="Mention honorable — AIA Canada Society"
+                data-en="Honourable Mention — AIA Canada Society">Mention honorable — AIA Canada Society</span>
+        </li>
+        <li>
+          <span data-fr="Bourse de voyage A. F. Dunlop"
+                data-en="A. F. Dunlop Travelling Scholarship">Bourse de voyage A. F. Dunlop</span>
+        </li>
+        <!-- Add further distinctions here -->
+      </ul>
+    </section>
+
+    <span class="footer">©<span class="full">&nbsp;2026 Oscar Lallier</span></span>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
