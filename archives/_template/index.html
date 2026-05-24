@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!-- Standard project page template.  Keep a copy at  archives/_template/index.html
+     New project:  copy this folder to  archives/<slug>/  (rename the folder to your slug),
+     add the project's entry in  js/projects.js , drop images in  archives/<slug>/img/ ,
+     then fill in the subtitle + body prose below.
+
+     Title, type, institution, date, award and collaborators are pulled
+     AUTOMATICALLY from js/projects.js by matching the folder name (slug) to the
+     URL — you do NOT type them here. Only the prose + images live in this file.
+
+     Paths for /css and /js are root-relative; image paths are folder-relative. -->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — Oscar Lallier</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body data-page="project">
+  <canvas id="grid-canvas"></canvas>
+
+  <div class="page-grid">
+    <a class="nav-item nav-name"     data-nav="index"        href="/">Oscar Lallier</a>
+    <a class="nav-item nav-archives" data-nav="archives"     href="/archives/"        data-i18n="nav_archives">Archives</a>
+    <a class="nav-item nav-info"     data-nav="informations" href="/informations/"    data-i18n="nav_info">Informations</a>
+    <button class="nav-item nav-lang" id="lang-toggle" type="button">En</button>
+
+    <!-- Auto-filled from projects.js (do not edit) -->
+    <h1 class="project-title">Project name</h1>
+    <div class="project-award"></div>
+    <div class="project-collaborators"></div>
+
+    <!-- Main image (left). Add it at  img/img-main.webp  -->
+    <div class="project-main-image">
+      <img src="img/img-main.webp" alt="">
+    </div>
+
+    <!-- Right column. Metadata is auto-filled; subtitle + body are hand-edited. -->
+    <div class="project-info">
+      <div class="project-meta">
+        <div class="pm-type"><span class="ml" data-i18n="col_type">Type</span></div>
+        <div class="pm-inst"><span class="ml" data-i18n="col_institution">Institution</span></div>
+        <div class="pm-date"><span class="ml" data-i18n="col_date">Date</span></div>
+      </div>
+
+      <!-- ↓ Edit: subtitle + body. Use data-fr / data-en for both languages. ↓ -->
+      <p class="project-subtitle"
+         data-fr="Sous-titre du projet."
+         data-en="Project subtitle.">Sous-titre du projet.</p>
+      <div class="project-body">
+        <p data-fr="Description du projet ici."
+           data-en="Project description goes here.">Description du projet ici.</p>
+      </div>
+      <!-- ↑ Edit ↑ -->
+    </div>
+
+    <!-- Extra images flow full-width below. Add more <img> as needed. -->
+    <div class="project-extra">
+      <!-- <img src="img/02.webp" alt=""> -->
+    </div>
+
+    <span class="footer">©<span class="full">&nbsp;2026 Oscar Lallier</span></span>
+  </div>
+
+  <script src="/js/institutions.js"></script>
+  <script src="/js/projects.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
