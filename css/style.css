@@ -1,8 +1,8 @@
-/* oslal — v0.4.3  →  css/style.css */
+/* oslal — v0.5.0  →  css/style.css */
 
 @font-face {
   font-family: 'PP Neue Montreal';
-  src: url('../assets/fonts/PPNeueMontreal-Regular.otf') format('opentype');
+  src: url('/assets/fonts/PPNeueMontreal-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,31 +12,41 @@
   --guide: #00ff00;
   --fg: #000000;
   --bg: #ffffff;
+  --muted: #888888;
+
   /* Grid — keep in sync with GRID in js/main.js */
-  --gutter: 10px;
-  --margin: 25px;
-  /* Column titles / headings */
-  --head-size: 24px;
+  --gutter: 16px;
+  --margin: 24px;
+
+  /* Row height — JS overrides this with a px value on load/resize.
+     Fallback mirrors the same formula: (100vh - 2*margin - 5*gutter)/6. */
+  --row-h: calc((100vh - 48px - 80px) / 6);
+
+  /* Typography scale */
+  --head-size:  24px;   /* column headers, section headings */
+  --title-size: 64px;   /* project title */
+  --sub-size:   16px;   /* subtitles */
+  --body-size:  10px;   /* dense body copy */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html, body { width: 100%; height: 100%; }
+html, body { width: 100%; min-height: 100%; }
 
 body {
   background: var(--bg);
   color: var(--fg);
   font-family: 'PP Neue Montreal', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 14px;
-  letter-spacing: -0.01em;   /* -10 per-mille tracking */
+  letter-spacing: -0.01em;
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
 }
 
 /* Landing is a single viewport (no scroll) */
-body[data-page="index"] { overflow: hidden; }
+body[data-page="index"] { overflow: hidden; height: 100%; }
 
-/* ---------- Welcome model: full-screen canvas so zoom isn't clipped ---------- */
+/* ---------- Welcome model: full-screen, fades in on load ---------- */
 #model {
   position: fixed;
   inset: 0;
@@ -45,25 +55,45 @@ body[data-page="index"] { overflow: hidden; }
   z-index: 0;
   background-color: transparent;
   --progress-bar-color: transparent;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
+#model.loaded { opacity: 1; }
 
-/* ---------- Page grid: 10 cols x 6 rows, 25px margin, 10px gutter ---------- */
+/* ---------- Page grid: 10 cols, 24px margin, 16px gutter ---------- */
 .page-grid {
   position: relative;
   z-index: 1;
-  height: 100vh;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  grid-template-rows: repeat(6, 1fr);
   gap: var(--gutter);
   padding: var(--margin);
-  pointer-events: none;        /* clicks/drag pass through to the model behind */
+  min-height: 100vh;
+  pointer-events: none;        /* clicks pass through to the model behind */
+}
+
+/* Landing: fixed 6 rows filling the viewport */
+body[data-page="index"] .page-grid {
+  height: 100vh;
+  grid-template-rows: repeat(6, var(--row-h));
+}
+
+/* Scrolling pages: rows snap to the same square-ish height, grow as needed */
+body[data-page="archives"] .page-grid,
+body[data-page="informations"] .page-grid,
+body[data-page="project"] .page-grid {
+  grid-auto-rows: var(--row-h);
+}
+
+/* Archives: nav (1) + headers (2) fixed, list (3) absorbs slack, footer follows */
+body[data-page="archives"] .page-grid {
+  grid-template-rows: var(--row-h) var(--row-h) minmax(var(--row-h), 1fr);
 }
 
 /* ---------- Navigation ---------- */
 .nav-item {
   align-self: start;
-  pointer-events: auto;        /* nav itself stays interactive */
+  pointer-events: auto;
   color: var(--fg);
   text-decoration: none;
   font: inherit;
@@ -92,6 +122,15 @@ body[data-page="index"] { overflow: hidden; }
   vertical-align: 0.02em;
 }
 
+/* ---------- External link arrow ---------- */
+.ext-link {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: auto;
+}
+.ext-link::after { content: '\2197'; margin-left: 0.15em; }   /* ↗ */
+.ext-link:hover { text-decoration: underline; }
+
 /* ---------- Archives: column headers (row 2) ---------- */
 .col-head {
   grid-row: 2;
@@ -103,17 +142,19 @@ body[data-page="index"] { overflow: hidden; }
 .head-institution { grid-column: 7 / span 2; }
 .head-date        { grid-column: 10; justify-self: end; }
 
-/* ---------- Archives: project list (rows 3–5) ---------- */
-/* Data cells aligned to the header columns above. */
+/* ---------- Archives: project list (row 3, grows) ---------- */
 .project-list {
   grid-column: 1 / span 10;
-  grid-row: 3 / span 3;
-  overflow-y: auto;
+  grid-row: 3;
+  align-self: start;
+  pointer-events: auto;
+  position: relative;
 }
 .project-row {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   gap: var(--gutter);
+  padding: 0.15em 0;
 }
 .project-row > * { min-width: 0; }
 .p-name { grid-column: 1 / span 5; }
@@ -123,31 +164,186 @@ body[data-page="index"] { overflow: hidden; }
 .p-name a { color: inherit; text-decoration: none; }
 .p-name a:hover { text-decoration: underline; }
 
-/* ---------- Informations: temporary placeholder ---------- */
+/* Hover preview floating over the list */
+#list-preview {
+  position: absolute;
+  top: 0;
+  left: 41.5%;                 /* roughly over columns 5–7 */
+  width: 26%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  z-index: 5;
+}
+#list-preview.visible { opacity: 1; }
+#list-preview img { width: 100%; display: block; }
+
+/* ---------- Informations ---------- */
 .info-soon {
-  grid-column: 6 / span 5;     /* cols 6–10 */
+  grid-column: 6 / span 5;
   grid-row: 3;
   align-self: start;
   font-size: var(--head-size);
 }
 
-/* ---------- Project page (archives/<slug>/) ---------- */
-.project-title  { grid-column: 1 / span 6; grid-row: 2; align-self: start; font-size: var(--head-size); font-weight: 400; }
-.project-meta   { grid-column: 1 / span 6; grid-row: 3; align-self: start; }
-.project-body   { grid-column: 1 / span 6; grid-row: 4 / span 2; align-self: start; }
-.project-images { grid-column: 7 / span 4; grid-row: 2 / span 4; align-self: start; overflow-y: auto; }
-.project-images img { width: 100%; display: block; margin-bottom: var(--gutter); }
+.info-section { pointer-events: auto; align-self: start; }
+.info-section .label {
+  font-size: var(--body-size);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 0.6em;
+}
+.info-section ul { list-style: none; }
+.info-section li { margin-bottom: 0.5em; }
+.info-section .sub { color: var(--muted); }
+.info-section a { color: inherit; }
 
-/* ---------- Footer ---------- */
+.info-contact   { grid-column: 1 / span 4;  grid-row: 2; }
+.info-experience{ grid-column: 1 / span 5;  grid-row: 3; }
+.info-education { grid-column: 1 / span 5;  grid-row: 4; }
+.info-awards    { grid-column: 6 / span 5;  grid-row: 3 / span 2; }
+
+/* ---------- Project page (archives/<slug>/) ---------- */
+.project-title {
+  grid-column: 1 / span 5;
+  grid-row: 2;
+  align-self: end;
+  font-size: var(--title-size);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  pointer-events: auto;
+}
+.project-award {
+  grid-column: 6 / span 3;
+  grid-row: 2;
+  align-self: end;
+  pointer-events: auto;
+}
+.project-collaborators {
+  grid-column: 9 / span 2;
+  grid-row: 2;
+  align-self: end;
+  justify-self: end;
+  text-align: right;
+  color: var(--muted);
+  pointer-events: auto;
+}
+
+/* Main image — square focal point, left half */
+.project-main-image {
+  grid-column: 1 / span 5;
+  grid-row: 3 / span 3;
+  align-self: start;
+  pointer-events: auto;
+}
+.project-main-image img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Right column: metadata + subtitle + flowing body, grows with content */
+.project-info {
+  grid-column: 6 / span 5;
+  grid-row: 3;
+  align-self: start;
+  pointer-events: auto;
+}
+
+/* Metadata strip mirrors the 5 right-hand columns */
+.project-meta {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--gutter);
+  margin-bottom: 1.5em;
+}
+.pm-type { grid-column: 1; }
+.pm-inst { grid-column: 2 / span 3; }
+.pm-date { grid-column: 5; text-align: right; }
+.project-meta .ml {
+  display: block;
+  font-size: var(--body-size);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 0.4em;
+}
+
+.project-subtitle {
+  font-size: var(--sub-size);
+  margin-bottom: 1.2em;
+}
+.project-body {
+  font-size: var(--body-size);
+  line-height: 1.5;
+  column-count: 2;
+  column-gap: var(--gutter);
+}
+.project-body p { margin-bottom: 0.8em; }
+
+/* Extra images flow full-width below */
+.project-extra {
+  grid-column: 1 / span 10;
+  align-self: start;
+  pointer-events: auto;
+  margin-top: var(--gutter);
+}
+.project-extra img { width: 100%; display: block; margin-bottom: var(--gutter); }
+
+/* ---------- Footer (© expands on click) ---------- */
 .footer {
-  grid-column: 1;
+  grid-column: 1 / span 4;
   grid-row: 6;
   align-self: end;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
 }
+body[data-page="archives"] .footer,
+body[data-page="informations"] .footer,
+body[data-page="project"] .footer { grid-row: auto; }
+
+.footer .full {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  vertical-align: bottom;
+  opacity: 0;
+  transition: max-width 0.4s ease, opacity 0.3s ease;
+}
+.footer.open .full { max-width: 30ch; opacity: 1; }
+
+/* ---------- Reveal animations ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(var(--i, 0) * 40ms);
+}
+.reveal.in-view { opacity: 1; transform: none; }
+
+/* Nav fade/slide on load */
+@keyframes navIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+.nav-item {
+  animation: navIn 0.5s ease both;
+}
+.nav-name     { animation-delay: 0.00s; }
+.nav-archives { animation-delay: 0.06s; }
+.nav-info     { animation-delay: 0.12s; }
+.nav-lang     { animation-delay: 0.18s; }
+
+/* Project title rises in */
+.project-title { animation: navIn 0.6s ease both; animation-delay: 0.1s; }
 
 /* ---------- Grid overlay ---------- */
 #grid-canvas {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
@@ -156,3 +352,11 @@ body[data-page="index"] { overflow: hidden; }
   z-index: 100;
 }
 #grid-canvas.visible { opacity: 1; }
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  #model { opacity: 1; transition: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .nav-item, .project-title { animation: none; }
+  .footer .full { transition: none; }
+}
