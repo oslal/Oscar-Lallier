@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Save this as  archives/index.html  (delete the old root-level archives.html) -->
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -12,22 +11,23 @@
 
   <div class="page-grid">
     <a class="nav-item nav-name"     data-nav="index"        href="/">Oscar Lallier</a>
-    <a class="nav-item nav-archives" data-nav="archives"     href="/archives/"         data-i18n="nav_archives">Archives</a>
-    <a class="nav-item nav-info"     data-nav="informations" href="/informations.html" data-i18n="nav_info">Informations</a>
+    <a class="nav-item nav-archives" data-nav="archives"     href="/archives/"        data-i18n="nav_archives">Archives</a>
+    <a class="nav-item nav-info"     data-nav="informations" href="/informations/"    data-i18n="nav_info">Informations</a>
     <button class="nav-item nav-lang" id="lang-toggle" type="button">En</button>
 
-    <!-- Column headers (Type / Institution / Date are identical in FR & EN) -->
-    <div class="col-head head-project" data-i18n="col_project">Projet</div>
-    <div class="col-head head-type">Type</div>
-    <div class="col-head head-institution">Institution</div>
-    <div class="col-head head-date">Date</div>
+    <!-- Column headers -->
+    <div class="col-head head-project"     data-i18n="col_project">Projet</div>
+    <div class="col-head head-type"        data-i18n="col_type">Type</div>
+    <div class="col-head head-institution" data-i18n="col_institution">Institution</div>
+    <div class="col-head head-date"        data-i18n="col_date">Date</div>
 
     <!-- Project list — rendered from js/projects.js -->
     <div class="project-list" id="project-list"></div>
 
-    <span class="footer">©</span>
+    <span class="footer">©<span class="full">&nbsp;2026 Oscar Lallier</span></span>
   </div>
 
+  <script src="/js/institutions.js"></script>
   <script src="/js/projects.js"></script>
   <script src="/js/main.js"></script>
 </body>
