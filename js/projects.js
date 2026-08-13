@@ -26,7 +26,6 @@
 */
 
 const PROJECTS = [
-  // 001
   {
     slug: 'prototyping-forest-resilience',
     name: "Prototyping Forest Resilience",
@@ -36,13 +35,23 @@ const PROJECTS = [
     page: true,
     preview: '/archives/prototyping-forest-resilience/img/img-main.webp',
     award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+     // collaborators: ['Name One', 'Name Two'],
+  },
+  {
+    slug: 'adaptative-reuse-mosque',
+    name: "Adaptative Reuse Mosque",
+    type: { fr: 'Atelier M1', en: 'M1 Studio' },
+    institution: { fr: 'Université McGill', en: 'McGill University' },
+    year: '2025',
+    page: true,
+    preview: '/archives/adaptative-reuse-mosque/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
     // collaborators: ['Name One', 'Name Two'],
   },
-     // 002
   {
     slug: 'quartiers-dhiver',
     name: "Quartiers d'Hiver",
-    type: { fr: 'Atelier de maîtrise', en: 'Masters Studio' },
+    type: { fr: 'Atelier M1', en: 'M1 Studio' },
     institution: { fr: 'Université McGill', en: 'McGill University' },
     year: '2024',
     page: true,
@@ -50,4 +59,71 @@ const PROJECTS = [
     award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
     // collaborators: ['Name One', 'Name Two'],
   },
+  {
+    slug: 'duramen',
+    name: "Duramen",
+    type: { fr: 'Atelier B3', en: 'B3 Studio' },
+    institution: { fr: 'École Polytechnique Fédérale de Lausanne (EPFL)', en: 'Swiss Federal Institute of Technology in Lausanne (EPFL)' },
+    year: '2024',
+    page: true,
+    preview: '/archives/duramen/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+    // collaborators: ['Name One', 'Name Two'],
+  },
+  {
+    slug: 'dansl-bois',
+    name: "Dans'l bois",
+    type: { fr: 'Atelier B3', en: 'B3 Studio' },
+    institution: { fr: 'École Polytechnique Fédérale de Lausanne (EPFL)', en: 'Swiss Federal Institute of Technology in Lausanne (EPFL)' },
+    year: '2023',
+    page: true,
+    preview: '/archives/dansl-bois/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+    // collaborators: ['Name One', 'Name Two'],
+  },
+  {
+    slug: 'maison-du-livre',
+    name: "Maison du livre",
+    type: { fr: 'Atelier B2', en: 'B2 Studio' },
+    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
+    year: '2023',
+    page: true,
+    preview: '/archives/maison-du-livre/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+    // collaborators: ['Name One', 'Name Two'],
+  },
+  {
+    slug: 'halte',
+    name: "Halte",
+    type: { fr: 'Atelier B2', en: 'B2 Studio' },
+    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
+    year: '2022',
+    page: true,
+    preview: '/archives/halte/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+    // collaborators: ['Name One', 'Name Two'],
+  },
+  {
+    slug: 'shed-a-tear',
+    name: "Tear a Shed",
+    type: { fr: 'Atelier B1', en: 'B1 Studio' },
+    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
+    year: '2022',
+    page: true,
+    preview: '/archives/shed-a-tear/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+    // collaborators: ['Name One', 'Name Two'],
+  },
+  {
+    slug: 'la-boite',
+    name: "La boîte",
+    type: { fr: 'Atelier B1', en: 'B1 Studio' },
+    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
+    year: '2021',
+    page: true,
+    preview: '/archives/la-boite/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+    // collaborators: ['Name One', 'Name Two'],
+  },
+// Fin de la page
 ];
