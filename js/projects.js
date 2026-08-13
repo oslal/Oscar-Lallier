@@ -38,6 +38,39 @@ const PROJECTS = [
      // collaborators: ['Name One', 'Name Two'],
   },
   {
+    slug: 'forum-holzbau',
+    name: "Forum Holzbau",
+    type: { fr: 'Stage', en: 'Internship' },
+    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
+    year: '2025',
+    page: true,
+    preview: '/archives/forum-holzbau/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+     // collaborators: ['Name One', 'Name Two'],
+  },   
+  {
+    slug: 'college-de-vufflens-le-chateau',
+    name: "Collège de Vufflens-le-Château",
+    type: { fr: 'Stage', en: 'Internship' },
+    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
+    year: '2025',
+    page: true,
+    preview: '/archives/college-de-vufflens-le-chateau/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+     // collaborators: ['Name One', 'Name Two'],
+  },   
+  {
+    slug: 'piscine-chatel-saint-denis',
+    name: "Piscine à Châtel-Saint-Denis",
+    type: { fr: 'Stage', en: 'Internship' },
+    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
+    year: '2025',
+    page: true,
+    preview: '/archives/piscine-chatel-saint-denis/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+     // collaborators: ['Name One', 'Name Two'],
+  }, 
+  {
     slug: 'adaptative-reuse-mosque',
     name: "Adaptative Reuse Mosque",
     type: { fr: 'Atelier M1', en: 'M1 Studio' },
