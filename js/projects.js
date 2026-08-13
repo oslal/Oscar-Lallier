@@ -29,12 +29,24 @@ const PROJECTS = [
   // 001
   {
     slug: 'prototyping-forest-resilience',
-    name: 'Prototyping Forest Resilience',
+    name: "Prototyping Forest Resilience",
     type: { fr: 'Projet de maîtrise', en: 'Masters Project' },
     institution: { fr: 'Université McGill', en: 'McGill University' },
     year: '2025 / 2026',
     page: true,
     preview: '/archives/prototyping-forest-resilience/img/img-main.webp',
+    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
+    // collaborators: ['Name One', 'Name Two'],
+  },
+     // 002
+  {
+    slug: 'quartiers-dhiver',
+    name: "Quartiers d'Hiver",
+    type: { fr: 'Atelier de maîtrise', en: 'Masters Studio' },
+    institution: { fr: 'Université McGill', en: 'McGill University' },
+    year: '2024',
+    page: true,
+    preview: '/archives/quartiers-dhiver/img/img-main.webp',
     award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
     // collaborators: ['Name One', 'Name Two'],
   },
