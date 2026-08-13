@@ -353,6 +353,17 @@ body[data-page="project"] .footer { grid-row: auto; }
 }
 #grid-canvas.visible { opacity: 1; }
 
+/* ---------- Green highlight when text is selected ---------- */
+::selection {
+  background: #00ff00;
+  color: #000000;
+}
+/* Firefox needs its own prefixed rule to pick it up */
+::-moz-selection {
+  background: #00ff00;
+  color: #000000;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   #model { opacity: 1; transition: none; }
