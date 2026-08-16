@@ -82,7 +82,7 @@ const PROJECTS = [
     // collaborators: ['Name One', 'Name Two'],
   },
   {
-    slug: 'quartiers-dhiver',
+    slug: 'quartiers-d-hiver',
     name: "Quartiers d'Hiver",
     type: { fr: 'Atelier M1', en: 'M1 Studio' },
     institution: { fr: 'Université McGill', en: 'McGill University' },
