@@ -225,10 +225,12 @@ function renderProjects() {
     date.className = 'p-date';
     date.textContent = p.year ?? '';
 
-    /* Hover preview */
-    if (p.preview) {
+    /* Hover preview — derives path from slug convention: <slug>_img-00.webp
+       Override by setting a `preview` field explicitly in projects.js. */
+    const previewSrc = p.preview ?? `/archives/${p.slug}/img/${p.slug}_img-00.webp`;
+    if (p.page) {
       row.addEventListener('mouseenter', () => {
-        previewImg.src = p.preview;
+        previewImg.src = previewSrc;
         preview.classList.add('visible');
       });
     } else {

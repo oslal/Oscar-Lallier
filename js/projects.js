@@ -16,9 +16,9 @@
    • year:         any string, e.g. '2024' or '2025 / 2026'
    • page:         true if a detail page exists at archives/<slug>/
                    (omit / false → name shows as plain text, no link)
-   • preview:      OPTIONAL image shown on hover in the Archives list.
-                   Path is relative to site root, e.g.
-                   '/archives/<slug>/img/img-main.webp'
+   • preview:      OPTIONAL override for the hover image in the Archives list.
+                   Defaults to /archives/<slug>/img/<slug>_img-00.webp
+                   (the naming convention). Only set this if a project deviates.
    • award:        OPTIONAL string OR { fr:'…', en:'…' } — shown on the project page
    • collaborators: OPTIONAL array of names (strings). Shown on the project page.
 
@@ -26,137 +26,16 @@
 */
 
 const PROJECTS = [
+  // 001
   {
     slug: 'prototyping-forest-resilience',
-    name: "Prototyping Forest Resilience",
+    name: 'Prototyping Forest Resilience',
     type: { fr: 'Projet de maîtrise', en: 'Masters Project' },
     institution: { fr: 'Université McGill', en: 'McGill University' },
     year: '2025 / 2026',
     page: true,
-    preview: '/archives/prototyping-forest-resilience/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-     // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'forum-holzbau',
-    name: "Forum Holzbau",
-    type: { fr: 'Stage', en: 'Internship' },
-    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
-    year: '2025',
-    page: true,
-    preview: '/archives/forum-holzbau/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-     // collaborators: ['Name One', 'Name Two'],
-  },   
-  {
-    slug: 'college-de-vufflens-le-chateau',
-    name: "Collège de Vufflens-le-Château",
-    type: { fr: 'Stage', en: 'Internship' },
-    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
-    year: '2025',
-    page: true,
-    preview: '/archives/college-de-vufflens-le-chateau/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-     // collaborators: ['Name One', 'Name Two'],
-  },   
-  {
-    slug: 'piscine-chatel-saint-denis',
-    name: "Piscine à Châtel-Saint-Denis",
-    type: { fr: 'Stage', en: 'Internship' },
-    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
-    year: '2025',
-    page: true,
-    preview: '/archives/piscine-chatel-saint-denis/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-     // collaborators: ['Name One', 'Name Two'],
-  }, 
-  {
-    slug: 'adaptative-reuse-mosque',
-    name: "Adaptative Reuse Mosque",
-    type: { fr: 'Atelier M1', en: 'M1 Studio' },
-    institution: { fr: 'Université McGill', en: 'McGill University' },
-    year: '2025',
-    page: true,
-    preview: '/archives/adaptative-reuse-mosque/img/img-main.webp',
+    // preview: '/archives/prototyping-forest-resilience/img/custom.webp',  // override only if needed
     award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
     // collaborators: ['Name One', 'Name Two'],
   },
-  {
-    slug: 'quartiers-d-hiver',
-    name: "Quartiers d'Hiver",
-    type: { fr: 'Atelier M1', en: 'M1 Studio' },
-    institution: { fr: 'Université McGill', en: 'McGill University' },
-    year: '2024',
-    page: true,
-    preview: '/archives/quartiers-dhiver/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'duramen',
-    name: "Duramen",
-    type: { fr: 'Atelier B3', en: 'B3 Studio' },
-    institution: { fr: 'École Polytechnique Fédérale de Lausanne', en: 'Swiss Federal Institute of Technology in Lausanne' },
-    year: '2024',
-    page: true,
-    preview: '/archives/duramen/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'dansl-bois',
-    name: "Dans'l bois",
-    type: { fr: 'Atelier B3', en: 'B3 Studio' },
-    institution: { fr: 'École Polytechnique Fédérale de Lausanne', en: 'Swiss Federal Institute of Technology in Lausanne' },
-    year: '2023',
-    page: true,
-    preview: '/archives/dansl-bois/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'maison-du-livre',
-    name: "Maison du livre",
-    type: { fr: 'Atelier B2', en: 'B2 Studio' },
-    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
-    year: '2023',
-    page: true,
-    preview: '/archives/maison-du-livre/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'halte',
-    name: "Halte",
-    type: { fr: 'Atelier B2', en: 'B2 Studio' },
-    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
-    year: '2022',
-    page: true,
-    preview: '/archives/halte/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'shed-a-tear',
-    name: "Tear a Shed",
-    type: { fr: 'Atelier B1', en: 'B1 Studio' },
-    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
-    year: '2022',
-    page: true,
-    preview: '/archives/shed-a-tear/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'la-boite',
-    name: "La boîte",
-    type: { fr: 'Atelier B1', en: 'B1 Studio' },
-    institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
-    year: '2021',
-    page: true,
-    preview: '/archives/la-boite/img/img-main.webp',
-    award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
-    // collaborators: ['Name One', 'Name Two'],
-  },
-// Fin de la page
 ];
