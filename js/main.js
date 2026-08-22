@@ -1,4 +1,4 @@
-/* oslal — v0.5.0  →  js/main.js */
+/* oslal — js/main.js */
 
 /* Grid config — keep in sync with .page-grid + :root in css/style.css */
 const GRID = { cols: 10, rows: 6, gutter: 16, margin: 24 };
@@ -219,7 +219,7 @@ function renderProjects() {
 
     const inst = document.createElement('div');
     inst.className = 'p-inst';
-    inst.appendChild(institutionNode(p.institution));
+    inst.textContent = pick(p.institution);
 
     const date = document.createElement('div');
     date.className = 'p-date';

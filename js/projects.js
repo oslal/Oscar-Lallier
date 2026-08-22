@@ -13,7 +13,7 @@
    • institution:  plain string OR { fr:'…', en:'…' }
                    If the name matches an entry in js/institutions.js it
                    becomes a link with an ↗ arrow, automatically.
-   • year:         any string, e.g. '2024' or '2025 / 2026'
+   • year:         a 4-digit year string, e.g. '2024'
    • page:         true if a detail page exists at archives/<slug>/
                    (omit / false → name shows as plain text, no link)
    • preview:      OPTIONAL override for the hover image in the Archives list.
@@ -31,7 +31,7 @@ const PROJECTS = [
     name: "Prototyping Forest Resilience",
     type: { fr: 'Projet de maîtrise', en: 'Masters Project' },
     institution: { fr: 'Université McGill', en: 'McGill University' },
-    year: '2025 / 2026',
+    year: '2026',
     page: true,
     award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
     // collaborators: ['Name One', 'Name Two'],
@@ -47,28 +47,8 @@ const PROJECTS = [
     // collaborators: ['Name One', 'Name Two'],
   },
   {
-    slug: 'college-de-vufflens-le-chateau',
-    name: "Collège de Vufflens-le-Château",
-    type: { fr: 'Stage', en: 'Internship' },
-    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
-    year: '2025',
-    page: true,
-    award: '',
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'piscine-chatel-saint-denis',
-    name: "Piscine à Châtel-Saint-Denis",
-    type: { fr: 'Stage', en: 'Internship' },
-    institution: { fr: 'Kuník de Morsier', en: 'Kuník de Morsier' },
-    year: '2025',
-    page: true,
-    award: '',
-    // collaborators: ['Name One', 'Name Two'],
-  },
-  {
-    slug: 'adaptative-reuse-mosque',
-    name: "Adaptative Reuse Mosque",
+    slug: 'adaptive-reuse-mosque',
+    name: "Adaptive Reuse Mosque",
     type: { fr: 'Atelier M1', en: 'M1 Studio' },
     institution: { fr: 'Université McGill', en: 'McGill University' },
     year: '2025',
@@ -132,6 +112,17 @@ const PROJECTS = [
     type: { fr: 'Atelier B1', en: 'B1 Studio' },
     institution: { fr: 'Université de Montréal', en: 'University of Montreal' },
     year: '2022',
+    page: true,
+    award: '',
+    // collaborators: ['Name One', 'Name Two'],
+  },
+  {
+    slug: 'echelle-humaine',
+    name: "Échelle humaine",
+    // ⚠ "Capstone Project" is my translation guess for "projet d'intégration des acquis" — adjust if you'd rather keep it French-only or phrase it differently
+    type: { fr: "Projet d'intégration des acquis", en: 'Capstone Project' },
+    institution: 'Collège de Maisonneuve',
+    year: '2021',
     page: true,
     award: '',
     // collaborators: ['Name One', 'Name Two'],
