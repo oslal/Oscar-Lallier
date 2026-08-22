@@ -1,4 +1,4 @@
-/* oslal — institution lookup  →  js/institutions.js  (v0.5.0)
+/* oslal — institution lookup  →  js/institutions.js
 
    Maps an institution to its website. Used by both the Archives list and the
    project pages to turn an institution name into a link with an ↗ arrow.
@@ -25,8 +25,8 @@ const INSTITUTIONS = {
     fr: 'Université McGill',
     url: 'https://www.mcgill.ca/architecture/'
   },
-  'EPFL': {
-    // École polytechnique fédérale de Lausanne — same acronym in FR/EN
+  'École Polytechnique Fédérale de Lausanne': {
+    en: 'Swiss Federal Institute of Technology in Lausanne',
     url: 'https://www.epfl.ch/schools/enac/'
   },
   'Université de Montréal': {
@@ -38,10 +38,10 @@ const INSTITUTIONS = {
     url: 'https://www.cmaisonneuve.qc.ca/'
   },
   'CB Architectes': {
-    url: 'https://cb-architectes.ch/'
+    url: 'https://cbarchitectes.com'
   },
   'Kuník de Morsier': {
-    url: 'https://kunikdemorsier.com/'
+    url: 'https://www.kunikdemorsier.ch'
   }
 };
 
