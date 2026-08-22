@@ -22,7 +22,7 @@
 
 const INSTITUTIONS = {
   'McGill University': {
-    fr: 'Université McGill',
+    // no fr override — displays as "McGill University" in both languages
     url: 'https://www.mcgill.ca/architecture/'
   },
   'École Polytechnique Fédérale de Lausanne': {

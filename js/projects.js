@@ -30,7 +30,7 @@ const PROJECTS = [
     slug: 'prototyping-forest-resilience',
     name: "Prototyping Forest Resilience",
     type: { fr: 'Projet de maîtrise', en: 'Masters Project' },
-    institution: { fr: 'Université McGill', en: 'McGill University' },
+    institution: 'McGill University',
     year: '2026',
     page: true,
     award: '',                 // e.g. { fr: 'Mention honorable', en: 'Honourable Mention' }
@@ -50,7 +50,7 @@ const PROJECTS = [
     slug: 'adaptive-reuse-mosque',
     name: "Adaptive Reuse Mosque",
     type: { fr: 'Atelier M1', en: 'M1 Studio' },
-    institution: { fr: 'Université McGill', en: 'McGill University' },
+    institution: 'McGill University',
     year: '2025',
     page: true,
     award: '',
@@ -60,7 +60,7 @@ const PROJECTS = [
     slug: 'quartiers-d-hiver',
     name: "Quartiers d'Hiver",
     type: { fr: 'Atelier M1', en: 'M1 Studio' },
-    institution: { fr: 'Université McGill', en: 'McGill University' },
+    institution: 'McGill University',
     year: '2024',
     page: true,
     award: '',
@@ -129,8 +129,8 @@ const PROJECTS = [
   {
     slug: 'echelle-humaine',
     name: "Échelle humaine",
-    // ⚠ "Capstone Project" is my translation guess for "projet d'intégration des acquis" — adjust if you'd rather keep it French-only or phrase it differently
-    type: { fr: "Projet d'intégration des acquis", en: 'Capstone Project' },
+    // ⚠ "Capstone Project" is my translation guess for "Projet intégrateur" — adjust if you'd rather phrase it differently
+    type: { fr: "Projet intégrateur", en: 'Capstone Project' },
     institution: 'Collège de Maisonneuve',
     year: '2021',
     page: true,
