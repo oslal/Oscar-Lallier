@@ -101,6 +101,7 @@ body[data-page="archives"] .page-grid {
   text-decoration: none;
   font: inherit;
   letter-spacing: inherit;
+  line-height: 1;
   background: none;
   border: none;
   cursor: pointer;
@@ -139,6 +140,7 @@ body[data-page="archives"] .page-grid {
   grid-row: 2;
   align-self: start;
   font-size: var(--head-size);
+  line-height: 1;
 }
 .head-project     { grid-column: 1 / span 5; }
 .head-type        { grid-column: 7; }
@@ -167,16 +169,21 @@ body[data-page="archives"] .page-grid {
 .p-name a { color: inherit; text-decoration: none; }
 .p-name a:hover { text-decoration: underline; }
 
-/* Hover preview — fixed 3×3 block, starts col 3 / row 2.
+/* Hover preview — starts col 3 / row 2, forced to a true 1:1 square.
+   Column width comes from viewport WIDTH÷10; --row-h comes from viewport
+   HEIGHT÷6 (calibrated so the landing page's 6 rows fill one screen) — the
+   two aren't mathematically tied, so "3 cols × 3 rows" isn't reliably square
+   on its own. aspect-ratio forces it square regardless of viewport shape.
    Positioned via calc() (not grid-row spanning) because the list's own row
    auto-expands to fit all projects — spanning it would stretch the preview
-   with it. This keeps it locked to 3 real row-h units regardless of list length. */
+   with it. */
 #list-preview {
+  --col-w: calc((100% - (2 * var(--margin)) - (9 * var(--gutter))) / 10);
   position: absolute;
-  left: calc(var(--margin) + 2 * (((100% - (2 * var(--margin)) - (9 * var(--gutter))) / 10) + var(--gutter)));
+  left: calc(var(--margin) + (2 * (var(--col-w) + var(--gutter))));
   top: calc(var(--row-h) + var(--gutter));
-  width: calc(3 * ((100% - (2 * var(--margin)) - (9 * var(--gutter))) / 10) + (2 * var(--gutter)));
-  height: calc(3 * var(--row-h) + (2 * var(--gutter)));
+  width: calc((3 * var(--col-w)) + (2 * var(--gutter)));
+  aspect-ratio: 1 / 1;
   pointer-events: none;
   opacity: 0;
   overflow: hidden;
@@ -197,7 +204,6 @@ body[data-page="archives"] .page-grid {
 .info-section { pointer-events: auto; align-self: start; }
 .info-section .label {
   font-size: var(--body-size);
-  text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--muted);
   margin-bottom: 0.6em;
@@ -217,6 +223,7 @@ body[data-page="archives"] .page-grid {
   grid-column: 1 / span 5;
   grid-row: 2;
   align-self: end;
+  text-align: right;
   font-size: var(--title-size);
   font-weight: 400;
   line-height: 1.0;
