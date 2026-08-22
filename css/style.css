@@ -31,6 +31,9 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+::selection { background: var(--guide); }
+::-moz-selection { background: var(--guide); }
+
 html, body { width: 100%; min-height: 100%; }
 
 body {
@@ -164,10 +167,16 @@ body[data-page="archives"] .page-grid {
 .p-name a { color: inherit; text-decoration: none; }
 .p-name a:hover { text-decoration: underline; }
 
-/* Hover preview floating over the list — 3×3 cells, starts col 3, row 2 */
+/* Hover preview — fixed 3×3 block, starts col 3 / row 2.
+   Positioned via calc() (not grid-row spanning) because the list's own row
+   auto-expands to fit all projects — spanning it would stretch the preview
+   with it. This keeps it locked to 3 real row-h units regardless of list length. */
 #list-preview {
-  grid-column: 3 / span 3;
-  grid-row: 2 / span 3;
+  position: absolute;
+  left: calc(var(--margin) + 2 * (((100% - (2 * var(--margin)) - (9 * var(--gutter))) / 10) + var(--gutter)));
+  top: calc(var(--row-h) + var(--gutter));
+  width: calc(3 * ((100% - (2 * var(--margin)) - (9 * var(--gutter))) / 10) + (2 * var(--gutter)));
+  height: calc(3 * var(--row-h) + (2 * var(--gutter)));
   pointer-events: none;
   opacity: 0;
   overflow: hidden;
